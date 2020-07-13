@@ -1,0 +1,452 @@
+<edmx:Edmx Version="1.0"
+    xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+    xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+    xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="./IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZC_SALESORDER_CDS" xml:lang="zh" sap:schema-version="1"
+            xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="VBAPType" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="VBELN"/>
+                    <PropertyRef Name="POSNR"/>
+                </Key>
+                <Property Name="VBELN" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="销售凭证"/>
+                <Property Name="POSNR" Type="Edm.String" Nullable="false" MaxLength="6" sap:display-format="NonNegative" sap:label="销售凭证项目"/>
+                <Property Name="MATNR" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="物料"/>
+                <Property Name="MATWA" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="已输入物料"/>
+                <Property Name="PMATN" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="定价参考物料"/>
+                <Property Name="CHARG" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="批次"/>
+                <Property Name="MATKL" Type="Edm.String" MaxLength="9" sap:display-format="UpperCase" sap:label="物料组"/>
+                <Property Name="ARKTX" Type="Edm.String" MaxLength="40" sap:label="项目描述"/>
+                <Property Name="PSTYV" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="项目类别"/>
+                <Property Name="POSAR" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="项目类型"/>
+                <Property Name="LFREL" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="项目与交货相关"/>
+                <Property Name="FKREL" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label=" 与出具发票相关"/>
+                <Property Name="UEPOS" Type="Edm.String" MaxLength="6" sap:display-format="NonNegative" sap:label="上层项目"/>
+                <Property Name="GRPOS" Type="Edm.String" MaxLength="6" sap:display-format="NonNegative" sap:label="可选项目"/>
+                <Property Name="ABGRU" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="拒绝原因"/>
+                <Property Name="PRODH" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:label="产品层次"/>
+                <Property Name="PRODH_UNIV_SALES_PARNT_NODID" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="节点 ID"/>
+                <Property Name="PRODH_UNIV_SALES_DET_ORIGIN" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="产品层次结构来源"/>
+                <Property Name="PRODH_UNIV_BATDET_PARNT_NODID" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="节点 ID"/>
+                <Property Name="PRODH_UNIV_BATDET_DET_ORIGIN" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="产品层次结构来源"/>
+                <Property Name="ZWERT" Type="Edm.Decimal" Precision="14" Scale="3" sap:unit="WAERK" sap:label="框架协议目标值"/>
+                <Property Name="ZMENG" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="ZIEME" sap:label="目标数量"/>
+                <Property Name="ZIEME" Type="Edm.String" MaxLength="3" sap:label="目标数量计量单位" sap:semantics="unit-of-measure"/>
+                <Property Name="UMZIZ" Type="Edm.Decimal" Precision="5" Scale="0" sap:label="转换因子"/>
+                <Property Name="UMZIN" Type="Edm.Decimal" Precision="5" Scale="0" sap:label="转换因子"/>
+                <Property Name="MEINS" Type="Edm.String" MaxLength="3" sap:label="基本计量单位" sap:semantics="unit-of-measure"/>
+                <Property Name="SMENG" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="MEINS" sap:label="等级数量"/>
+                <Property Name="ABLFZ" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="ZIEME" sap:label="舍入数量"/>
+                <Property Name="ABDAT" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="统驭日期"/>
+                <Property Name="ABSFZ" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="ZIEME" sap:label="绝对偏差"/>
+                <Property Name="POSEX" Type="Edm.String" MaxLength="6" sap:display-format="UpperCase" sap:label="采购订单项目"/>
+                <Property Name="KDMAT" Type="Edm.String" MaxLength="35" sap:display-format="UpperCase" sap:label="客户物料"/>
+                <Property Name="KBVER" Type="Edm.Decimal" Precision="3" Scale="0" sap:label="最大允许偏差％"/>
+                <Property Name="KEVER" Type="Edm.Decimal" Precision="3" Scale="0" sap:label="偏差天数"/>
+                <Property Name="VKGRU" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="项目分类"/>
+                <Property Name="VKAUS" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="使用"/>
+                <Property Name="GRKOR" Type="Edm.String" MaxLength="3" sap:display-format="NonNegative" sap:label="交货组"/>
+                <Property Name="FMENG" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="数量固定"/>
+                <Property Name="UEBTK" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="无限制的容差"/>
+                <Property Name="UEBTO" Type="Edm.Decimal" Precision="3" Scale="1" sap:label="过量交货容差"/>
+                <Property Name="UNTTO" Type="Edm.Decimal" Precision="3" Scale="1" sap:label="交货不足容差"/>
+                <Property Name="FAKSP" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="开票冻结"/>
+                <Property Name="ATPKZ" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="替换部件"/>
+                <Property Name="RKFKF" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="出具发票方式 CO/PPC"/>
+                <Property Name="SPART" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="产品组"/>
+                <Property Name="GSBER" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="业务范围"/>
+                <Property Name="NETWR" Type="Edm.Decimal" Precision="16" Scale="3" sap:unit="WAERK" sap:label="净值"/>
+                <Property Name="WAERK" Type="Edm.String" MaxLength="5" sap:label="凭证货币" sap:semantics="currency-code"/>
+                <Property Name="ANTLF" Type="Edm.Decimal" Precision="1" Scale="0" sap:label="最大部分交货"/>
+                <Property Name="KZTLF" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="部分交货/项目"/>
+                <Property Name="CHSPL" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="被允许的批量拆分"/>
+                <Property Name="KWMENG" Type="Edm.Decimal" Precision="15" Scale="3" sap:unit="VRKME" sap:label="订单数量"/>
+                <Property Name="LSMENG" Type="Edm.Decimal" Precision="15" Scale="3" sap:unit="VRKME" sap:label="需求交货数量"/>
+                <Property Name="KBMENG" Type="Edm.Decimal" Precision="15" Scale="3" sap:unit="VRKME" sap:label="累计确认数量 (SU)"/>
+                <Property Name="KLMENG" Type="Edm.Decimal" Precision="15" Scale="3" sap:unit="MEINS" sap:label="累计确认数量 (BU)"/>
+                <Property Name="VRKME" Type="Edm.String" MaxLength="3" sap:label="销售单位" sap:semantics="unit-of-measure"/>
+                <Property Name="UMVKZ" Type="Edm.Decimal" Precision="5" Scale="0" sap:label="分子"/>
+                <Property Name="UMVKN" Type="Edm.Decimal" Precision="5" Scale="0" sap:label="分母"/>
+                <Property Name="BRGEW" Type="Edm.Decimal" Precision="15" Scale="3" sap:unit="GEWEI" sap:label="毛重"/>
+                <Property Name="NTGEW" Type="Edm.Decimal" Precision="15" Scale="3" sap:unit="GEWEI" sap:label="净重"/>
+                <Property Name="GEWEI" Type="Edm.String" MaxLength="3" sap:label="重量单位" sap:semantics="unit-of-measure"/>
+                <Property Name="VOLUM" Type="Edm.Decimal" Precision="15" Scale="3" sap:unit="VOLEH" sap:label="体积"/>
+                <Property Name="VOLEH" Type="Edm.String" MaxLength="3" sap:label="体积单位" sap:semantics="unit-of-measure"/>
+                <Property Name="VBELV" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="起始凭证"/>
+                <Property Name="POSNV" Type="Edm.String" MaxLength="6" sap:display-format="NonNegative" sap:label="项目"/>
+                <Property Name="VGBEL" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="参考凭证"/>
+                <Property Name="VGPOS" Type="Edm.String" MaxLength="6" sap:display-format="NonNegative" sap:label="参考项目"/>
+                <Property Name="VOREF" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="完全参考"/>
+                <Property Name="UPFLU" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="更新凭证流"/>
+                <Property Name="ERLRE" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="完成规则"/>
+                <Property Name="LPRIO" Type="Edm.String" MaxLength="2" sap:display-format="NonNegative" sap:label="交货优先权"/>
+                <Property Name="WERKS" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="工厂"/>
+                <Property Name="LGORT" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="存储地点"/>
+                <Property Name="VSTEL" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="装运点"/>
+                <Property Name="ROUTE" Type="Edm.String" MaxLength="6" sap:display-format="UpperCase" sap:label="路线"/>
+                <Property Name="STKEY" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="原始 BOM"/>
+                <Property Name="STDAT" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="BOM 关键日期"/>
+                <Property Name="STLNR" Type="Edm.String" MaxLength="8" sap:display-format="UpperCase" sap:label="物料清单"/>
+                <Property Name="STPOS" Type="Edm.Decimal" Precision="5" Scale="0" sap:label="BOM 项目号码"/>
+                <Property Name="AWAHR" Type="Edm.String" MaxLength="3" sap:display-format="NonNegative" sap:label="订单可能性"/>
+                <Property Name="ERDAT" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="创建日期"/>
+                <Property Name="ERNAM" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="创建者"/>
+                <Property Name="ERZET" Type="Edm.Time" Precision="0" sap:label="时间"/>
+                <Property Name="TAXM1" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="税分类"/>
+                <Property Name="TAXM2" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="税分类"/>
+                <Property Name="TAXM3" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="税分类"/>
+                <Property Name="TAXM4" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="税分类"/>
+                <Property Name="TAXM5" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="税分类"/>
+                <Property Name="TAXM6" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="税分类"/>
+                <Property Name="TAXM7" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="税分类"/>
+                <Property Name="TAXM8" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="税分类"/>
+                <Property Name="TAXM9" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="税分类"/>
+                <Property Name="VBEAF" Type="Edm.Decimal" Precision="5" Scale="2" sap:label="固定处理时间"/>
+                <Property Name="VBEAV" Type="Edm.Decimal" Precision="5" Scale="2" sap:label="可变处理时间"/>
+                <Property Name="VGREF" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="含参考的先前文件"/>
+                <Property Name="NETPR" Type="Edm.Decimal" Precision="12" Scale="3" sap:unit="WAERK" sap:label="净价"/>
+                <Property Name="KPEIN" Type="Edm.Decimal" Precision="5" Scale="0" sap:label="定价单位"/>
+                <Property Name="KMEIN" Type="Edm.String" MaxLength="3" sap:label="计量单位" sap:semantics="unit-of-measure"/>
+                <Property Name="SHKZG" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="退货"/>
+                <Property Name="SKTOF" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="现金折扣"/>
+                <Property Name="MTVFP" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="可用性检查"/>
+                <Property Name="SUMBD" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="需求总计"/>
+                <Property Name="KONDM" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="物料价格组"/>
+                <Property Name="KTGRM" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="物料科目分配组"/>
+                <Property Name="BONUS" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="成交额回扣组"/>
+                <Property Name="PROVG" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="佣金组"/>
+                <Property Name="EANNR" Type="Edm.String" MaxLength="13" sap:display-format="UpperCase" sap:label="EAN 编号"/>
+                <Property Name="PRSOK" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="定价"/>
+                <Property Name="BWTAR" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="评估类型"/>
+                <Property Name="BWTEX" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="分别估价"/>
+                <Property Name="XCHPF" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="批次管理"/>
+                <Property Name="XCHAR" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="批次管理"/>
+                <Property Name="LFMNG" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="MEINS" sap:label="最小交货数量"/>
+                <Property Name="STAFO" Type="Edm.String" MaxLength="6" sap:display-format="UpperCase" sap:label="更新组（统计）"/>
+                <Property Name="WAVWR" Type="Edm.Decimal" Precision="14" Scale="3" sap:unit="WAERK" sap:label="成本"/>
+                <Property Name="KZWI1" Type="Edm.Decimal" Precision="14" Scale="3" sap:unit="WAERK" sap:label="小计1"/>
+                <Property Name="KZWI2" Type="Edm.Decimal" Precision="14" Scale="3" sap:unit="WAERK" sap:label="小计2"/>
+                <Property Name="KZWI3" Type="Edm.Decimal" Precision="14" Scale="3" sap:unit="WAERK" sap:label="小计3"/>
+                <Property Name="KZWI4" Type="Edm.Decimal" Precision="14" Scale="3" sap:unit="WAERK" sap:label="小计4"/>
+                <Property Name="KZWI5" Type="Edm.Decimal" Precision="14" Scale="3" sap:unit="WAERK" sap:label="小计5"/>
+                <Property Name="KZWI6" Type="Edm.Decimal" Precision="14" Scale="3" sap:unit="WAERK" sap:label="小计 6"/>
+                <Property Name="STCUR" Type="Edm.Decimal" Precision="9" Scale="5" sap:label="汇率统计"/>
+                <Property Name="AEDAT" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="更改日期"/>
+                <Property Name="EAN11" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:label="EAN/UPC"/>
+                <Property Name="FIXMG" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="固定日期和数量"/>
+                <Property Name="PRCTR" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="利润中心"/>
+                <Property Name="MVGR1" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="物料组1"/>
+                <Property Name="MVGR2" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="物料组2"/>
+                <Property Name="MVGR3" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="物料组 3"/>
+                <Property Name="MVGR4" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="物料组 4"/>
+                <Property Name="MVGR5" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="物料组 5"/>
+                <Property Name="KMPMG" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="MEINS" sap:label="组件数量"/>
+                <Property Name="SUGRD" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="替代原因"/>
+                <Property Name="SOBKZ" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="特殊库存"/>
+                <Property Name="VPZUO" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="分配标识"/>
+                <Property Name="PAOBJNR" Type="Edm.String" MaxLength="10" sap:display-format="NonNegative" sap:label="获利能力段编号"/>
+                <Property Name="PS_PSP_PNR" Type="Edm.String" MaxLength="24" sap:display-format="NonNegative" sap:label="工作分解结构要素"/>
+                <Property Name="AUFNR" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="订单"/>
+                <Property Name="VPMAT" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="计划物料"/>
+                <Property Name="VPWRK" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="计划工厂"/>
+                <Property Name="PRBME" Type="Edm.String" MaxLength="3" sap:label="产品组单位" sap:semantics="unit-of-measure"/>
+                <Property Name="UMREF" Type="Edm.Double" sap:label="转换"/>
+                <Property Name="KNTTP" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="科目分配类别"/>
+                <Property Name="KZVBR" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="消耗"/>
+                <Property Name="SERNR" Type="Edm.String" MaxLength="8" sap:display-format="UpperCase" sap:label="BOM展开号"/>
+                <Property Name="OBJNR" Type="Edm.String" MaxLength="22" sap:display-format="UpperCase" sap:label="项目对象编号"/>
+                <Property Name="ABGRS" Type="Edm.String" MaxLength="6" sap:display-format="UpperCase" sap:label="结果分析码"/>
+                <Property Name="BEDAE" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="需求类型"/>
+                <Property Name="CMPRE" Type="Edm.Decimal" Precision="12" Scale="3" sap:unit="WAERK" sap:label="赊销价格"/>
+                <Property Name="CMTFG" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="部分下达"/>
+                <Property Name="CMPNT" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="信贷功能激活"/>
+                <Property Name="CMKUA" Type="Edm.Decimal" Precision="9" Scale="5" sap:label="信贷数据汇率"/>
+                <Property Name="CUOBJ" Type="Edm.String" MaxLength="18" sap:display-format="NonNegative" sap:label="配置"/>
+                <Property Name="CUOBJ_CH" Type="Edm.String" MaxLength="18" sap:display-format="NonNegative" sap:label="内部对象号码"/>
+                <Property Name="CEPOK" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="期望价格"/>
+                <Property Name="KOUPD" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="条件更新"/>
+                <Property Name="SERAIL" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="序列号参数文件"/>
+                <Property Name="ANZSN" Type="Edm.Int32" sap:label="序列号数"/>
+                <Property Name="NACHL" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="客户未过帐收货"/>
+                <Property Name="MAGRV" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="物料组的包装物料"/>
+                <Property Name="MPROK" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="人工定价"/>
+                <Property Name="VGTYP" Type="Edm.String" MaxLength="4" sap:label="先前凭证类别"/>
+                <Property Name="PROSA" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="物料确定激活"/>
+                <Property Name="UEPVW" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="上一层项目使用"/>
+                <Property Name="KALNR" Type="Edm.String" MaxLength="12" sap:display-format="NonNegative" sap:label="成本估算编号"/>
+                <Property Name="KLVAR" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="成本核算变式"/>
+                <Property Name="SPOSN" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="项目编号"/>
+                <Property Name="KOWRR" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="统计值"/>
+                <Property Name="STADAT" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="统计日期"/>
+                <Property Name="EXART" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="业务交易类型"/>
+                <Property Name="PREFE" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="关税优惠"/>
+                <Property Name="KNUMH" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="条件记录批编号"/>
+                <Property Name="CLINT" Type="Edm.String" MaxLength="10" sap:display-format="NonNegative" sap:label="内部类号"/>
+                <Property Name="CHMVS" Type="Edm.String" MaxLength="3" sap:display-format="NonNegative" sap:label="数量建议"/>
+                <Property Name="STLTY" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="物料清单类别"/>
+                <Property Name="STLKN" Type="Edm.String" MaxLength="8" sap:display-format="NonNegative" sap:label="项目节点"/>
+                <Property Name="STPOZ" Type="Edm.String" MaxLength="8" sap:display-format="NonNegative" sap:label="计数器"/>
+                <Property Name="STMAN" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="不一致的配置"/>
+                <Property Name="ZSCHL_K" Type="Edm.String" MaxLength="6" sap:display-format="UpperCase" sap:label="间接费用码"/>
+                <Property Name="KALSM_K" Type="Edm.String" MaxLength="6" sap:display-format="UpperCase" sap:label="成本核算表"/>
+                <Property Name="KALVAR" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="成本核算变式"/>
+                <Property Name="KOSCH" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:label="产品分配"/>
+                <Property Name="UPMAT" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="主项目定价参考物料"/>
+                <Property Name="UKONM" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="主项目 物料定价组"/>
+                <Property Name="MFRGR" Type="Edm.String" MaxLength="8" sap:display-format="UpperCase" sap:label="物料运输组"/>
+                <Property Name="PLAVO" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="计划交货计划指令"/>
+                <Property Name="KANNR" Type="Edm.String" MaxLength="35" sap:display-format="UpperCase" sap:label="顺序编号"/>
+                <Property Name="CMPRE_FLT" Type="Edm.Double" sap:unit="WAERK" sap:label="赊销价格"/>
+                <Property Name="ABFOR" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="付款担保表格"/>
+                <Property Name="ABGES" Type="Edm.Double" sap:label="担保的"/>
+                <Property Name="J_1BCFOP" Type="Edm.String" MaxLength="10" sap:label="CFOP"/>
+                <Property Name="J_1BTAXLW1" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="ICMS 法"/>
+                <Property Name="J_1BTAXLW2" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="IPI 法则"/>
+                <Property Name="J_1BTXSDC" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="税务代码"/>
+                <Property Name="WKTNR" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="值合同编号"/>
+                <Property Name="WKTPS" Type="Edm.String" MaxLength="6" sap:display-format="NonNegative" sap:label="价值合同项目"/>
+                <Property Name="SKOPF" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:label="模块"/>
+                <Property Name="KZBWS" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="特定库存的评估"/>
+                <Property Name="WGRU1" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:label="物料组 1"/>
+                <Property Name="WGRU2" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:label="物料组2"/>
+                <Property Name="KNUMA_PI" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="促销"/>
+                <Property Name="KNUMA_AG" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="销售交易"/>
+                <Property Name="KZFME" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="前导计量单位"/>
+                <Property Name="LSTANR" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="自由货物交货控制"/>
+                <Property Name="TECHS" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="标准变式"/>
+                <Property Name="MWSBP" Type="Edm.Decimal" Precision="14" Scale="3" sap:unit="WAERK" sap:label="税额"/>
+                <Property Name="BERID" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="MRP 范围"/>
+                <Property Name="PCTRF" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="利润中心开票"/>
+                <Property Name="LOGSYS_EXT" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="逻辑系统"/>
+                <Property Name="J_1BTAXLW3" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="ISS Law"/>
+                <Property Name="J_1BTAXLW4" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="COFINS Law"/>
+                <Property Name="J_1BTAXLW5" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="PIS Law"/>
+                <Property Name="STOCKLOC" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="地点"/>
+                <Property Name="SLOCTYPE" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="位置类型"/>
+                <Property Name="MSR_RET_REASON" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="退货原因"/>
+                <Property Name="MSR_REFUND_CODE" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="退款代码"/>
+                <Property Name="MSR_APPROV_BLOCK" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="审批"/>
+                <Property Name="NRAB_KNUMH" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="条件记录编号"/>
+                <Property Name="TRMRISK_RELEVANT" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="风险相关性"/>
+                <Property Name="SGT_RCAT" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="需求细分"/>
+                <Property Name="VBKD_POSNR" Type="Edm.String" MaxLength="6" sap:display-format="NonNegative" sap:label="销售凭证项目"/>
+                <Property Name="VEDA_POSNR" Type="Edm.String" MaxLength="6" sap:display-format="NonNegative" sap:label="销售凭证项目"/>
+                <Property Name="HANDOVERLOC" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="移交地点"/>
+                <Property Name="EXT_REF_ITEM_ID" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="外部项目标识"/>
+                <Property Name="HANDOVERDATE" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="移交日期"/>
+                <Property Name="HANDOVERTIME" Type="Edm.Time" Precision="0" sap:label="移交时间"/>
+                <Property Name="TC_AUT_DET" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="TC Auto. Det."/>
+                <Property Name="MANUAL_TC_REASON" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Man. TC Reason"/>
+                <Property Name="FISCAL_INCENTIVE" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Tax Incent Type"/>
+                <Property Name="TAX_SUBJECT_ST" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Tax Subj. to ST"/>
+                <Property Name="FISCAL_INCENTIVE_ID" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Incentive ID"/>
+                <Property Name="SPCSTO" Type="Edm.String" MaxLength="2" sap:display-format="NonNegative" sap:label="NF Special Case"/>
+                <Property Name="REVACC_REFID" Type="Edm.String" MaxLength="30" sap:label="收入会计参考 ID"/>
+                <Property Name="REVACC_REFTYPE" Type="Edm.String" MaxLength="3" sap:label="收入会计参考类型"/>
+                <Property Name="_DATAAGING" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Data Filter Value for Data Aging"/>
+                <Property Name="ABSTA" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="拒绝状态"/>
+                <Property Name="BESTA" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="确认状态"/>
+                <Property Name="CMPPI" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="财务凭证"/>
+                <Property Name="CMPPJ" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="出口信贷保险"/>
+                <Property Name="COSTA" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="确认状态"/>
+                <Property Name="DCSTA" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="延迟状态"/>
+                <Property Name="FKSAA" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="开票状态"/>
+                <Property Name="FSSTA" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="开票冻结状态"/>
+                <Property Name="GBSTA" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="总体状态"/>
+                <Property Name="LFGSA" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="总体交货状态"/>
+                <Property Name="LFSTA" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="交货状态"/>
+                <Property Name="LSSTA" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="交货冻结项目状态"/>
+                <Property Name="MANEK" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="手动完成"/>
+                <Property Name="RFGSA" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="参考状态"/>
+                <Property Name="RFSTA" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="参考状态"/>
+                <Property Name="UVALL" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="项目数据"/>
+                <Property Name="UVFAK" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="项目开票数据..."/>
+                <Property Name="UVPRS" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="定价"/>
+                <Property Name="UVVLK" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="项目交货数据"/>
+                <Property Name="UVP01" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="项目储备金1"/>
+                <Property Name="UVP02" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="项目储备金2"/>
+                <Property Name="UVP03" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="项目储备金 3"/>
+                <Property Name="UVP04" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="项目储备金4"/>
+                <Property Name="UVP05" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="项目储备金5"/>
+                <Property Name="WBSTA" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="货物移动状态"/>
+                <Property Name="EMCST" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="禁运状态"/>
+                <Property Name="SLCST" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="WLS 状态"/>
+                <Property Name="TOTAL_LCCST" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="总体管制状态"/>
+                <Property Name="PCSTA" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="产品适销性状态"/>
+                <Property Name="DGSTA" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="危险品状态"/>
+                <Property Name="SDSSTA" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="安全技术说明书状态"/>
+                <Property Name="DP_CLEAR_STA_ITM" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="预付款状态"/>
+                <Property Name="CMTD_DELIV_DATE" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="承诺的交货日期"/>
+                <Property Name="CMTD_DELIV_CREADATE" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="承诺的交货创建日期"/>
+                <Property Name="CMTD_DELIV_QTY_SU" Type="Edm.Decimal" Precision="15" Scale="3" sap:unit="VRKME" sap:label="承诺的交货数量"/>
+                <Property Name="REQQTY_BU" Type="Edm.Decimal" Precision="15" Scale="3" sap:unit="MEINS" sap:label="申请的销售订单数量"/>
+                <Property Name="HANDLE" Type="Edm.Guid" sap:display-format="UpperCase" sap:label="GUID 16"/>
+                <Property Name="PBS_STATE" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="基于项目的服务的状态"/>
+                <Property Name="IFRS15_RELEVANCE" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="与 IFRS 15 相关"/>
+                <Property Name="IFRS15_TOTAL_SSP" Type="Edm.Decimal" Precision="16" Scale="3" sap:unit="WAERK" sap:label="独立销售价格"/>
+                <Property Name="REVFP" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="可用性检查规则"/>
+                <Property Name="CAPPED_NET_AMOUNT" Type="Edm.Decimal" Precision="16" Scale="3" sap:unit="WAERK" sap:label="净金额上限"/>
+                <Property Name="CAPPED_NET_AMOUNT_ALERT_THLD" Type="Edm.String" MaxLength="3" sap:display-format="NonNegative" sap:label="上限通知阈值"/>
+                <Property Name="CATS_OVERTIME_CATEGORY" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="加班类别"/>
+                <Property Name="SESSION_CREATION_DATE" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="会话创建日期"/>
+                <Property Name="SESSION_CREATION_TIME" Type="Edm.Time" Precision="0" sap:label="会话创建时间"/>
+                <Property Name="ORIGINAL_PLANT" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="原始工厂"/>
+                <Property Name="ATP_ABC_SUBSTITUTION_STATUS" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="替代状态"/>
+                <Property Name="DUMMY_SLSDOCITEM_INCL_EEW_PS" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="长度 1 中的哑元函数"/>
+                <Property Name="PO_QUAN" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="PO_UNIT" sap:label="订单数量"/>
+                <Property Name="PO_UNIT" Type="Edm.String" MaxLength="3" sap:label="订单单位" sap:semantics="unit-of-measure"/>
+                <Property Name="MILL_SE_GPOSN" Type="Edm.String" MaxLength="6" sap:display-format="NonNegative" sap:label="全局项目"/>
+                <Property Name="MILL_BATCH_SEL_F" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="厂批选择标识"/>
+                <Property Name="CPD_UPDAT" Type="Edm.Decimal" Precision="15" Scale="0" sap:label="时戳"/>
+                <Property Name="ZAPCGKI" Type="Edm.String" MaxLength="4" sap:display-format="NonNegative" sap:label="Annexing Package key"/>
+                <Property Name="APCGK_EXTENDI" Type="Edm.String" MaxLength="10" sap:display-format="NonNegative" sap:label="Ann.Package Extend"/>
+                <Property Name="ZABDATI" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Annexing base date"/>
+                <Property Name="AUFPL_OLC" Type="Edm.String" MaxLength="10" sap:display-format="NonNegative" sap:label="工序的任务清单号"/>
+                <Property Name="APLZL_OLC" Type="Edm.String" MaxLength="8" sap:display-format="NonNegative" sap:label="计数器"/>
+                <Property Name="AD01PROFNR" Type="Edm.String" MaxLength="8" sap:display-format="UpperCase" sap:label="DIP 参数文件"/>
+                <Property Name="ADMOI" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="模型标识代码"/>
+                <Property Name="ADICC" Type="Edm.String" MaxLength="2" sap:display-format="NonNegative" sap:label="交换代码"/>
+                <Property Name="ADPRI" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="订单优先级"/>
+                <Property Name="ADDNS" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="请勿替代"/>
+                <Property Name="ADACN" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="航空器注册号"/>
+                <Property Name="LABSG" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="预测交货计划 EDI Ind"/>
+                <Property Name="FABSG" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="JITDSchdEDI Ind"/>
+                <Property Name="PR_L_L" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="新预测与当前比较"/>
+                <Property Name="PR_F_F" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Comp. JIT DS-JIT DS"/>
+                <Property Name="PR_F_L" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Comp. JITDS-FrcstDS"/>
+                <Property Name="FERC_IND" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Regulatory indicator"/>
+                <Property Name="FSH_SEASON_YEAR" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="季节年度"/>
+                <Property Name="FSH_SEASON" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="季节"/>
+                <Property Name="FSH_COLLECTION" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="集合"/>
+                <Property Name="FSH_THEME" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="主题"/>
+                <Property Name="FSH_CRSD" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="条件记录编号"/>
+                <Property Name="FSH_SEAREF" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="复制的季节数据"/>
+                <Property Name="FSH_CANDATE" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="取消日期"/>
+                <Property Name="FSH_PSM_PFM_SPLIT" Type="Edm.String" MaxLength="15" sap:display-format="UpperCase" sap:label="PFM 拆分标识"/>
+                <Property Name="FSH_VAS_REL" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="增值服务相关"/>
+                <Property Name="FSH_VAS_PRNT_ID" Type="Edm.String" MaxLength="6" sap:display-format="NonNegative" sap:label="项目(SD)"/>
+                <Property Name="FSH_TRANSACTION" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="事务编号"/>
+                <Property Name="FSH_ITEM_GROUP" Type="Edm.String" MaxLength="5" sap:display-format="NonNegative" sap:label="项目组"/>
+                <Property Name="FSH_ITEM" Type="Edm.String" MaxLength="5" sap:display-format="NonNegative" sap:label="项目编号"/>
+                <Property Name="FSH_VASREF" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="复制的增值服务数据"/>
+                <Property Name="FSH_GRID_COND_REC" Type="Edm.String" MaxLength="32" sap:display-format="UpperCase" sap:label="记录编号"/>
+                <Property Name="FSH_PQR_UEPOS" Type="Edm.String" MaxLength="6" sap:display-format="NonNegative" sap:label="部分数量拒绝中高级项"/>
+                <Property Name="RFM_SCC_INDICATOR" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="季节完整性标识"/>
+                <Property Name="KOSTL" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="成本中心"/>
+                <Property Name="FONDS" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="基金"/>
+                <Property Name="FISTL" Type="Edm.String" MaxLength="16" sap:display-format="UpperCase" sap:label="基金中心"/>
+                <Property Name="FKBER" Type="Edm.String" MaxLength="16" sap:display-format="UpperCase" sap:label="功能范围"/>
+                <Property Name="GRANT_NBR" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="同意"/>
+                <Property Name="BUDGET_PD" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="预算期间"/>
+                <Property Name="IUID_RELEVANT" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="IUID 客户相关"/>
+                <Property Name="EQUNR" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:label="设备"/>
+                <Property Name="EQART" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="对象类型"/>
+                <Property Name="J_3GLVART" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="活动类型"/>
+                <Property Name="J_3GDATVO" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="开始日期"/>
+                <Property Name="J_3GDATBI" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="到期日"/>
+                <Property Name="J_3GBELNRI" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="凭证编号"/>
+                <Property Name="J_3GPOSNRI" Type="Edm.String" MaxLength="5" sap:display-format="NonNegative" sap:label="项目编号"/>
+                <Property Name="PRS_OBJNR" Type="Edm.String" MaxLength="22" sap:display-format="UpperCase" sap:label="约定管理：对象编号"/>
+                <Property Name="PRS_SD_SPSNR" Type="Edm.String" MaxLength="24" sap:display-format="NonNegative" sap:label="标准 WBS 要素"/>
+                <Property Name="PRS_WORK_PERIOD" Type="Edm.String" MaxLength="11" sap:display-format="NonNegative" sap:label="工作期间"/>
+                <Property Name="TAS" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Treasury Account Sym"/>
+                <Property Name="BETC" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Business Evt Typ Cd"/>
+                <Property Name="MOD_ALLOW" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Modification Allowed"/>
+                <Property Name="CANCEL_ALLOW" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Cancellation Allowed"/>
+                <Property Name="PAY_METHOD" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="付款方式"/>
+                <Property Name="BPN" Type="Edm.String" MaxLength="6" sap:display-format="UpperCase" sap:label="Business Partner No."/>
+                <Property Name="REP_FREQ" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Reporting Frequency"/>
+                <Property Name="FMFGUS_KEY" Type="Edm.Guid" sap:label="美国政府字段"/>
+                <Property Name="RFM_PSST_RULE" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="PSST 分组规则"/>
+                <Property Name="RFM_PSST_GROUP" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="PSST 组"/>
+                <Property Name="PARGB" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="贸易合作伙伴 BA"/>
+                <Property Name="AUFPL_OAA" Type="Edm.String" MaxLength="10" sap:display-format="NonNegative" sap:label="工序的任务清单号"/>
+                <Property Name="APLZL_OAA" Type="Edm.String" MaxLength="8" sap:display-format="NonNegative" sap:label="计数器"/>
+                <Property Name="VLCENDCU" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="最终客户"/>
+                <Property Name="WRF_CHARSTC1" Type="Edm.String" MaxLength="18" sap:label="特性 1"/>
+                <Property Name="WRF_CHARSTC2" Type="Edm.String" MaxLength="18" sap:label="特性 2"/>
+                <Property Name="WRF_CHARSTC3" Type="Edm.String" MaxLength="18" sap:label="特性 3"/>
+                <Property Name="ARSNUM" Type="Edm.String" MaxLength="10" sap:display-format="NonNegative" sap:label="保留"/>
+                <Property Name="ARSPOS" Type="Edm.String" MaxLength="4" sap:display-format="NonNegative" sap:label="项目编码"/>
+                <Property Name="WTYSC_CLMITEM" Type="Edm.String" MaxLength="16" sap:display-format="UpperCase" sap:label="声明项目编号"/>
+            </EntityType>
+            <EntityType Name="ZC_SALESORDERType" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="vbeln"/>
+                </Key>
+                <Property Name="vbeln" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="销售凭证"/>
+                <Property Name="erdat" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="创建日期" sap:quickinfo="记录创建日期"/>
+                <Property Name="erzet" Type="Edm.Time" Precision="0" sap:label="时间" sap:quickinfo="输入时间"/>
+                <Property Name="ernam" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="创建者" sap:quickinfo="创建对象的人员名称"/>
+                <Property Name="angdt" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="报价有效期自" sap:quickinfo="报价/询价的有效起始日期"/>
+                <Property Name="bnddt" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="报价有效期至" sap:quickinfo="绑定投标/报价的截止日期（有效期截止日期）"/>
+                <Property Name="audat" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="凭证日期" sap:quickinfo="凭证日期 (接收/发送日期)"/>
+                <Property Name="vbtyp" Type="Edm.String" MaxLength="4" sap:label="SD 凭证类别" sap:quickinfo="销售和分销凭证类别"/>
+                <Property Name="trvog" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="事务组"/>
+                <Property Name="auart" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="销售凭证类型"/>
+                <Property Name="augru" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="订货原因" sap:quickinfo="订单原因（业务交易原因）"/>
+                <Property Name="gwldt" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="担保" sap:quickinfo="担保日期"/>
+                <Property Name="submi" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="汇总号" sap:quickinfo="汇总号 (SD)"/>
+                <Property Name="lifsk" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="交货冻结" sap:quickinfo="交货冻结（凭证抬头）"/>
+                <Property Name="faksk" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="开票冻结" sap:quickinfo="销售与分销凭证中的开票冻结"/>
+                <Property Name="netwr" Type="Edm.Decimal" Precision="16" Scale="3" sap:unit="waerk" sap:label="净值" sap:quickinfo="凭证货币中销售订单的净值"/>
+                <Property Name="waerk" Type="Edm.String" MaxLength="5" sap:label="凭证货币" sap:quickinfo="销售和分销凭证货币" sap:semantics="currency-code"/>
+                <Property Name="vkorg" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="销售组织"/>
+                <Property Name="vtweg" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="分销渠道"/>
+                <NavigationProperty Name="to_Item" Relationship="ZC_SALESORDER_CDS.assoc_AE41725D18F6B771E02DBD83A9CBF164" FromRole="FromRole_assoc_AE41725D18F6B771E02DBD83A9CBF164" ToRole="ToRole_assoc_AE41725D18F6B771E02DBD83A9CBF164"/>
+            </EntityType>
+            <Association Name="assoc_AE41725D18F6B771E02DBD83A9CBF164" sap:content-version="1">
+                <End Type="ZC_SALESORDER_CDS.ZC_SALESORDERType" Multiplicity="1" Role="FromRole_assoc_AE41725D18F6B771E02DBD83A9CBF164"/>
+                <End Type="ZC_SALESORDER_CDS.VBAPType" Multiplicity="*" Role="ToRole_assoc_AE41725D18F6B771E02DBD83A9CBF164"/>
+            </Association>
+            <EntityContainer Name="ZC_SALESORDER_CDS_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="VBAP" EntityType="ZC_SALESORDER_CDS.VBAPType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZC_SALESORDER" EntityType="ZC_SALESORDER_CDS.ZC_SALESORDERType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <AssociationSet Name="assoc_AE41725D18F6B771E02DBD83A9CBF164" Association="ZC_SALESORDER_CDS.assoc_AE41725D18F6B771E02DBD83A9CBF164" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_SALESORDER" Role="FromRole_assoc_AE41725D18F6B771E02DBD83A9CBF164"/>
+                    <End EntitySet="VBAP" Role="ToRole_assoc_AE41725D18F6B771E02DBD83A9CBF164"/>
+                </AssociationSet>
+            </EntityContainer>
+            <Annotations Target="ZC_SALESORDER_CDS.ZC_SALESORDER_CDS_Entities"
+                xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Aggregation.ApplySupported">
+                    <Record>
+                        <PropertyValue Property="Transformations">
+                            <Collection>
+                                <String>aggregate</String>
+                                <String>groupby</String>
+                                <String>filter</String>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Rollup" EnumMember="None"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <atom:link rel="self" href="./sap/ZC_SALESORDER_CDS/$metadata"
+                xmlns:atom="http://www.w3.org/2005/Atom"/>
+                <atom:link rel="latest-version" href="./sap/ZC_SALESORDER_CDS/$metadata"
+                    xmlns:atom="http://www.w3.org/2005/Atom"/>
+                </Schema>
+            </edmx:DataServices>
+        </edmx:Edmx>

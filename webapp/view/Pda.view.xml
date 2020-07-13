@@ -1,0 +1,53 @@
+<mvc:View
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+	controllerName="com.shunyu.pdaUi5.controller.Pda"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:layout="sap.ui.layout"
+    xmlns:html="http://www.w3.org/1999/xhtml">
+    <App>
+        <pages>
+            <Page title="PDA检验单入库" id="page">
+                <content>
+                    <form:SimpleForm editable="true" layout="ResponsiveGridLayout" id="form" >
+                        <form:content>
+                            <Label>
+                                <layoutData >
+                                    <layout:GridData span="xL10 L10 M10 S10" />
+                                </layoutData>
+                            </Label>
+                            <Button text="过账">
+                                <layoutData>
+                                    <layout:GridData span="XL2 L2 M2 S2" />
+                                </layoutData>
+                            </Button>
+                            <Input id="inPrueflos" >
+                                <layoutData>
+                                    <layout:GridData span="xL8 L8 M8 S8" />
+                                </layoutData>
+                            </Input>
+                            <Button text="扫描" press="onScan">
+                                <layoutData>
+                                    <layout:GridData span="XL2 L2 M2 S2" />
+                                </layoutData>
+                            </Button>
+                            <Button text="录入" press="onNewForm">
+                                <layoutData>
+                                    <layout:GridData span="XL2 L2 M2 S2" />
+                                </layoutData>
+                            </Button>
+                        </form:content>
+                    </form:SimpleForm>
+                </content>
+                <footer>
+                    <OverflowToolbar>
+                        <ToolbarSpacer/>
+                        <Button text="Accept" type="Accept" />
+                        <Button text="Reject" type="Reject" />
+                    </OverflowToolbar>
+                </footer>
+            </Page>
+        </pages>
+    </App>
+</mvc:View>
