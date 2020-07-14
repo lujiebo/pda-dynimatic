@@ -238,11 +238,6 @@ sap.ui.define([
           }
         });
       }
-    },
-    onCreateInvoice: function () {
-      var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-			console.log("open the invoice creation page.");
-			oRouter.navTo("createInvoice", {"invoicefrom": "Home"}, true);
     }
   });
 });

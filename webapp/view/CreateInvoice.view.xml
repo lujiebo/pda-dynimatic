@@ -1,0 +1,92 @@
+<mvc:View controllerName="com.shunyu.pdaUi5.controller.CreateInvoice"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns:form="sap.ui.layout.form">
+    <Page title="{i18n>TIT_CREATE_TICKET_PAGE_TITLE}"  enableScrolling="true" showNavButton="true" navButtonPress="onNavBack">
+        <content>
+            <form:Form id="ticketForm"
+                xmlns="sap.ui.layout" busy="false" busyIndicatorDelay="1000" visible="true">
+                <form:formContainers>
+                    <form:FormContainer
+                        xmlns="sap.ui.layout" expanded="true" expandable="false" visible="true">
+                        <form:formElements>
+                            <form:FormElement
+                                xmlns="sap.ui.layout" visible="true" label="{i18n>CreateInvoiceView.NO}" >
+                                <form:fields>
+                                   <Input xmlns="sap.m" required="true" submit="onLoadInfo"/>
+                                </form:fields>
+                            </form:FormElement>
+                            <form:FormElement
+                                xmlns="sap.ui.layout" visible="true" label="{i18n>CreateInvoiceView.MATERIEL}" >
+                                <form:fields>
+                                    <Input xmlns="sap.m" required="true" editable="false" value="{invoice>/MATERIAL}"/>
+                                    <Input xmlns="sap.m" required="true" editable="false" value="{invoice>/MAKTX}"/>
+                                </form:fields>
+                            </form:FormElement>
+                            <form:FormElement
+                                xmlns="sap.ui.layout" visible="true" label="发出仓库" >
+                                <form:fields>
+                                    <Input xmlns="sap.m" required="true" editable="false" value="{invoice>/MOVE_STLOC}"/>
+                                </form:fields>
+                            </form:FormElement>
+                            <form:FormElement
+                                xmlns="sap.ui.layout" visible="true" label="待入仓库" >
+                                <form:fields>
+                                    <Input xmlns="sap.m" required="true" value="{invoice>/STEG_LOC}"/>
+                                </form:fields>
+                            </form:FormElement>
+                            <form:FormElement
+                                xmlns="sap.ui.layout" visible="true" label="数量" >
+                                <form:fields>
+                                    <Input xmlns="sap.m" required="true" editable="false" value="{invoice>/ENTRY_QNT}"/>
+                                </form:fields>
+                            </form:FormElement>
+                            <form:FormElement
+                                xmlns="sap.ui.layout" visible="true" label="计量单位" >
+                                <form:fields>
+                                    <Input xmlns="sap.m" required="true" editable="false" value="{invoice>/MEINS}"/>
+                                </form:fields>
+                            </form:FormElement>
+                            <form:FormElement
+                                xmlns="sap.ui.layout" visible="true" label="批次" >
+                                <form:fields>
+                                    <Input xmlns="sap.m" required="true" editable="false" value="{invoice>/BATCH}"/>
+                                </form:fields>
+                            </form:FormElement>
+                            <form:FormElement
+                                xmlns="sap.ui.layout" visible="true" label="供应商/客户" >
+                                <form:fields>
+                                    <Input xmlns="sap.m" required="true" editable="false" value="{invoice>/SC}"/>
+                                    <Input xmlns="sap.m" required="true" editable="false" value="{invoice>/DESCRIPTION}"/>
+                                </form:fields>
+                            </form:FormElement>
+                            <form:FormElement
+                                xmlns="sap.ui.layout" visible="true" label="特殊库存标记" >
+                                <form:fields>
+                                    <Input xmlns="sap.m" required="true" editable="false" value="{invoice>/SPEC_STOCK}"/>
+                                </form:fields>
+                            </form:FormElement>                          
+                        </form:formElements>
+                            </form:FormContainer>
+                        </form:formContainers>
+                        <form:layout>
+                            <form:ResponsiveGridLayout
+                                xmlns="sap.ui.layout"
+  						visible="true" labelSpanL="3" labelSpanM="3" labelSpanS="12"
+  						emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsL="2"
+  						columnsM="2" breakpointL="1024" breakpointM="600">
+                            </form:ResponsiveGridLayout>
+                        </form:layout>
+                    </form:Form>
+                </content>
+                <footer>
+                    <Toolbar>
+                        <ToolbarSpacer/>
+                        <Button text="确认" type="Emphasized" press="onOkPress"/>
+                    </Toolbar>
+                </footer>
+            </Page>
+        </mvc:View>

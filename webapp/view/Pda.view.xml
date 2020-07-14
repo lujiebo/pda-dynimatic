@@ -8,43 +8,39 @@
     xmlns:html="http://www.w3.org/1999/xhtml">
     <App>
         <pages>
-            <Page title="PDA检验单入库" id="page">
+            <Page title="{i18n>PdaView.Title}" id="page" enableScrolling="true">
                 <content>
-                    <form:SimpleForm editable="true" layout="ResponsiveGridLayout" id="form" >
-                        <form:content>
-                            <Label>
-                                <layoutData >
-                                    <layout:GridData span="xL10 L10 M10 S10" />
-                                </layoutData>
-                            </Label>
-                            <Button text="过账">
-                                <layoutData>
-                                    <layout:GridData span="XL2 L2 M2 S2" />
-                                </layoutData>
-                            </Button>
-                            <Input id="inPrueflos" >
-                                <layoutData>
-                                    <layout:GridData span="xL8 L8 M8 S8" />
-                                </layoutData>
-                            </Input>
-                            <Button text="扫描" press="onScan">
-                                <layoutData>
-                                    <layout:GridData span="XL2 L2 M2 S2" />
-                                </layoutData>
-                            </Button>
-                            <Button text="录入" press="onNewForm">
-                                <layoutData>
-                                    <layout:GridData span="XL2 L2 M2 S2" />
-                                </layoutData>
-                            </Button>
-                        </form:content>
-                    </form:SimpleForm>
+                    <List
+						id="ProductList"
+						items="{/ProductCollection}"
+						includeItemInSelection="true">
+                        <headerToolbar>
+                            <OverflowToolbar>
+                                <content>
+                                    <Title text="{i18n>PdaView.Invoices}" level="H2"/>
+                                </content>
+                            </OverflowToolbar>
+                        </headerToolbar>
+                        <StandardListItem
+							title="{Name}"
+							description="{ProductId}"
+							icon="{ProductPicUrl}"
+							iconDensityAware="false"
+							iconInset="false"
+							press="handlePress"
+							detailPress="handleDetailPress" />
+                    </List>
+                    <!--form:SimpleForm editable="true" layout="ResponsiveGridLayout" id="form" >
+					<form:content><Label><layoutData ><layout:GridData span="xL10 L10 M10 S10" />
+					</layoutData></Label><Input id="inPrueflos" ><layoutData><layout:GridData span="xL8 L8 M8 S8" />
+					</layoutData></Input><Button text="扫描" press="onScan"><layoutData><layout:GridData span="XL2 L2 M2 S2" />
+					</layoutData></Button></form:content></form:SimpleForm-->
                 </content>
                 <footer>
                     <OverflowToolbar>
                         <ToolbarSpacer/>
-                        <Button text="Accept" type="Accept" />
-                        <Button text="Reject" type="Reject" />
+                        <Button text="{i18n>PdaView.NewInvoice}" type="Reject" press="onCreateInvoice"/>
+                        <Button text="{i18n>PdaView.Accept}" type="Accept" />
                     </OverflowToolbar>
                 </footer>
             </Page>

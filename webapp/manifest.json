@@ -96,6 +96,11 @@
           "target": [
             "Pda"
           ]
+        },
+        {
+          "name": "createInvoice",
+          "pattern": "createInvoice/{invoicefrom}",
+          "target": ["createInvoice"]
         }
       ],
       "targets": {
@@ -104,7 +109,12 @@
           "viewLevel": 1,
           "viewId": "pda",
           "viewName": "Pda"
-        }
+        },
+        "createInvoice": {
+					"viewName": "CreateInvoice",
+					"viewId": "CreateInvoice",
+					"viewLevel": 2
+				}
       }
     }
   }
